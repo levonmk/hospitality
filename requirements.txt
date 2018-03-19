@@ -1,0 +1,5 @@
+Flask==0.12.2
+pymongo==3.6.1
+Flask-PyMongo==0.5.1
+JSON-delta==2.0
+flask-restful==0.3.6
