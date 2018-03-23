@@ -1,18 +1,19 @@
 from flask import Flask
 from flask_restful import Api
-from flask_pymongo import PyMongo
+from flask_sqlalchemy import SQLAlchemy
 
-from hospitality.guest import Guest
-from hospitality.location import Location
-from hospitality.booking import Booking
+from hospitality.guest.rest import Guest
+#from hospitality.location.rest import Location
+#from hospitality.booking.rest import Booking
 
 app = Flask(__name__)
+app.config.from_envvar('HOSPITALITY_SETTINGS')
+db = SQLAlchemy(app)
 api = Api(app)
-mongo = PyMongo(app)
 
-api.add_resource(Guest, '/guest')
-api.add_resource(Location, '/location')
-api.add_resource(Booking, '/booking')
+api.add_resource(Guest, '/guest/')
+#api.add_resource(Location, '/location')
+#api.add_resource(Booking, '/booking')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host=app.config['HOST'])

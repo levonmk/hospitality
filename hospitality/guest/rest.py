@@ -1,4 +1,5 @@
 from flask_restful import Resource
 
 class Guest(Resource):
-    pass
+    def get(self):
+        return {'hello': 'World'}
